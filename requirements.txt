@@ -1,0 +1,6 @@
+streamlit
+streamlit-lottie
+boto3
+pydeck
+pandas
+streamlit-option-menu
