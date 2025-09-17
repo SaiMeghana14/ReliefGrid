@@ -50,17 +50,58 @@ st.dataframe(filtered.reset_index(drop=True), height=300)
 st.subheader("🗺 Map")
 if not filtered.empty and 'lat' in filtered.columns and 'lon' in filtered.columns:
     try:
-        layer = pdk.Layer(
-            "ScatterplotLayer",
-            data=filtered,
-            get_position='[lon, lat]',
-            get_color='[255, 120, 80, 160]',
-            get_radius=30000,
-            pickable=True
+        # Layer toggles
+        st.sidebar.header("Map Layers")
+        show_scatter = st.sidebar.checkbox("Scatterplot (default)", True)
+        show_heatmap = st.sidebar.checkbox("Heatmap", False)
+        show_cluster = st.sidebar.checkbox("Cluster Grid", False)
+
+        layers = []
+
+        if show_scatter:
+            layers.append(
+                pdk.Layer(
+                    "ScatterplotLayer",
+                    data=filtered,
+                    get_position='[lon, lat]',
+                    get_color='[255, 120, 80, 160]',
+                    get_radius=30000,
+                    pickable=True,
+                )
+            )
+
+        if show_heatmap:
+            layers.append(
+                pdk.Layer(
+                    "HeatmapLayer",
+                    data=filtered,
+                    get_position='[lon, lat]',
+                    aggregation=pdk.types.String("MEAN"),
+                    opacity=0.6,
+                )
+            )
+
+        if show_cluster:
+            layers.append(
+                pdk.Layer(
+                    "ScreenGridLayer",
+                    data=filtered,
+                    get_position='[lon, lat]',
+                    cell_size_pixels=40,
+                    color_range=[[255, 180, 0, 200]],
+                )
+            )
+
+        view = pdk.ViewState(
+            latitude=filtered["lat"].mean() if "lat" in filtered else 20.5937,
+            longitude=filtered["lon"].mean() if "lon" in filtered else 78.9629,
+            zoom=4,
+            pitch=30,
         )
-        view = pdk.ViewState(latitude=20.5937, longitude=78.9629, zoom=4, pitch=0)
-        deck = pdk.Deck(map_style='ROAD', layers=[layer], initial_view_state=view)
+
+        deck = pdk.Deck(map_style="ROAD", layers=layers, initial_view_state=view, tooltip={"text": "{category}: {quantity}"})
         st.pydeck_chart(deck, use_container_width=True)
+
     except Exception as e:
         # fallback to st.map
         try:
