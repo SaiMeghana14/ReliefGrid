@@ -1,0 +1,92 @@
+[
+  {
+    "id": "res-1",
+    "category": "Food",
+    "description": "Rice sacks available near Charminar, Hyderabad. Contact: 90000xxxxx",
+    "quantity": 50,
+    "lat": 17.3606,
+    "lon": 78.4747,
+    "timestamp": 1694500000
+  },
+  {
+    "id": "res-2",
+    "category": "Water",
+    "description": "Bottled water pallets at Anna Nagar, Chennai. Contact: 90001xxxxx",
+    "quantity": 200,
+    "lat": 13.0704,
+    "lon": 80.2165,
+    "timestamp": 1694500300
+  },
+  {
+    "id": "res-3",
+    "category": "Shelter",
+    "description": "Community hall open for 80 people in Indore. Contact: shelter@ngo.org",
+    "quantity": 80,
+    "lat": 22.7196,
+    "lon": 75.8577,
+    "timestamp": 1694500600
+  },
+  {
+    "id": "res-4",
+    "category": "Medicine",
+    "description": "First aid kits available in Panaji. Contact: 90002xxxxx",
+    "quantity": 30,
+    "lat": 15.4909,
+    "lon": 73.8278,
+    "timestamp": 1694500900
+  },
+  {
+    "id": "res-5",
+    "category": "Volunteers",
+    "description": "Volunteer team available for distribution in Pune. Contact: volunteer@org.org",
+    "quantity": 12,
+    "lat": 18.5204,
+    "lon": 73.8567,
+    "timestamp": 1694501200
+  },
+  {
+    "id": "res-6",
+    "category": "Food",
+    "description": "Canned meals near Varanasi railway junction.",
+    "quantity": 150,
+    "lat": 25.3176,
+    "lon": 82.9739,
+    "timestamp": 1694501500
+  },
+  {
+    "id": "res-7",
+    "category": "Water",
+    "description": "RO-treated water tankers available in Guwahati.",
+    "quantity": 4,
+    "lat": 26.1445,
+    "lon": 91.7362,
+    "timestamp": 1694501800
+  },
+  {
+    "id": "res-8",
+    "category": "Shelter",
+    "description": "School auditorium for temporary shelter in Lucknow.",
+    "quantity": 150,
+    "lat": 26.8467,
+    "lon": 80.9462,
+    "timestamp": 1694502100
+  },
+  {
+    "id": "res-9",
+    "category": "Medicine",
+    "description": "Oral rehydration salts and paracetamol in Kolkata clinics.",
+    "quantity": 500,
+    "lat": 22.5726,
+    "lon": 88.3639,
+    "timestamp": 1694502400
+  },
+  {
+    "id": "res-10",
+    "category": "Other",
+    "description": "Blankets and winter clothing stock in Srinagar.",
+    "quantity": 300,
+    "lat": 34.0837,
+    "lon": 74.7973,
+    "timestamp": 1694502700
+  }
+]
