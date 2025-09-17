@@ -6,6 +6,11 @@ from streamlit_lottie import st_lottie
 import utils
 st.set_page_config(page_title="ReliefGrid", layout="wide", initial_sidebar_state="expanded")
 
+import auth
+if not auth.is_logged_in():
+    st.warning("Please login first.")
+    st.stop()
+
 # styles
 with open("app.css") as f:
     st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
