@@ -1,0 +1,38 @@
+/* simple modern styles */
+
+body, .stApp {
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+}
+
+h1, .stTitle {
+  color: #0B6E4F;
+}
+
+.stButton>button {
+  background-color: #0B6E4F !important;
+  color: white !important;
+  border-radius: 10px;
+}
+
+.widget-label {
+  font-weight: 600;
+}
+
+/* cards style */
+.card {
+  background: linear-gradient(180deg, #ffffff, #f7f9fb);
+  border-radius: 12px;
+  padding: 12px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+}
+
+/* make tables full width */
+[data-testid="stDataFrameContainer"] {
+  width: 100% !important;
+}
+
+/* small tweaks for lottie containers */
+.lottie {
+  display: flex;
+  justify-content: center;
+}
