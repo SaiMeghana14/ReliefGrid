@@ -1,0 +1,44 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: ReliefGrid infra - DynamoDB table, SNS topic, IAM Role (example)
+
+Resources:
+  ReliefGridTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ReliefGridResources
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      BillingMode: PAY_PER_REQUEST
+      TimeToLiveSpecification:
+        AttributeName: ttl
+        Enabled: false
+
+  ReliefGridNotificationsTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: ReliefGridNotifications
+
+  ReliefGridPublishPolicy:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: ReliefGridPublishPolicy
+      Roles: []
+      PolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Action:
+              - "sns:Publish"
+            Resource: "*"
+
+Outputs:
+  DynamoDBTable:
+    Description: "DynamoDB Table name"
+    Value: !Ref ReliefGridTable
+  SNSTopicArn:
+    Description: "SNS Topic ARN"
+    Value: !Ref ReliefGridNotificationsTopic
