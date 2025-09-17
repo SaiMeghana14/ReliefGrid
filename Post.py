@@ -49,3 +49,14 @@ if submit:
     st.success("Resource posted successfully!")
     if success_anim:
         st_lottie(success_anim, height=180, key="success_post")
+
+uploaded = st.file_uploader("Upload Image", type=["png", "jpg", "jpeg"])
+if submit:
+    if uploaded:
+        import boto3, uuid
+        s3 = boto3.client("s3")
+        bucket = os.getenv("S3_BUCKET", "reliefgrid-resources")
+        key = f"uploads/{uuid.uuid4()}-{uploaded.name}"
+        s3.upload_fileobj(uploaded, bucket, key, ExtraArgs={"ACL": "public-read"})
+        image_url = f"https://{bucket}.s3.amazonaws.com/{key}"
+        item["image_url"] = image_url
